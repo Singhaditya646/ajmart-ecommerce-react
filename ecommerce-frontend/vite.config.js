@@ -16,7 +16,7 @@ export default defineConfig({
         target: 'http://localhost:3000'
       }
     }
-  }
+  },
   // ✅ This is the key for SPA fallback when building
-  base: '/',
+  base: '/'
 })
