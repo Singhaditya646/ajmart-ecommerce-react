@@ -1,4 +1,4 @@
-import './header.css';
+import './Header.css';
 import { NavLink, useNavigate, useSearchParams } from 'react-router';
 import logo from '../assets/ajmart-logo-white.png';
 import mobileLogo from '../assets/ajmart-mobile-logo-white.png';
