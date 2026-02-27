@@ -4,6 +4,9 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: 'dist',
+  },
   server: {
     proxy: {
       '/api' : {
@@ -14,4 +17,6 @@ export default defineConfig({
       }
     }
   }
+  // ✅ This is the key for SPA fallback when building
+  base: '/',
 })
