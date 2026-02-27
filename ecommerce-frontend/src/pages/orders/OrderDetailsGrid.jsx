@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { Fragment } from "react";
 import api from '../../api'; // <-- import your centralized API
+import { Link } from "react-router";
 
 export function OrderDetailsGrid({ order, loadCart }) {
   return (
@@ -41,11 +42,11 @@ export function OrderDetailsGrid({ order, loadCart }) {
             </div>
 
             <div className="product-actions">
-              <a href = {`/tracking/${order.id}/${orderProduct.product.id}`}>
+              <Link to = {`/tracking/${order.id}/${orderProduct.product.id}`}>
                 <button className="track-package-button button-secondary">
                   Track package
                 </button>
-              </a>
+              </Link>
             </div>
           </Fragment>
         );
