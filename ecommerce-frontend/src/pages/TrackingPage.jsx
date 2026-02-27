@@ -1,5 +1,5 @@
 import "./TrackingPage.css";
-import { useParams } from 'react-router';
+import { useParams, Link } from 'react-router';
 import { useState, useEffect } from "react";
 import api from '../api'; // use centralized api
 import dayjs from 'dayjs';
@@ -26,6 +26,8 @@ export function TrackingPage( {cart }) {
     return orderProduct.productId === productId;
   });
 
+  if(!orderProduct) return null;
+
   return (
     <>
      <title>Tracking</title>
@@ -34,9 +36,9 @@ export function TrackingPage( {cart }) {
       <Header cart={cart} />
       <div className="tracking-page">
         <div className="order-tracking">
-          <a className="back-to-orders-link link-primary" href="/orders">
+          <Link className="back-to-orders-link link-primary" to="/orders">
             View all orders
-          </a>
+          </Link>
 
           <div className="delivery-date">Arriving on {dayjs(orderProduct.estimatedDeliveryTimeMs).format('dddd, MMMM D')}</div>
 
