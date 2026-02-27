@@ -1,7 +1,7 @@
 import "./TrackingPage.css";
 import { useParams } from 'react-router';
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import api from '../api'; // use centralized api
 import dayjs from 'dayjs';
 import { Header } from '../components/Header';
 
@@ -11,7 +11,7 @@ export function TrackingPage( {cart }) {
 
   useEffect(() => {
     const fetchTrackingData = async () => {
-      const response = await axios.get(`/api/orders/${orderId}?expand=products`)
+      const response = await api.get(`/api/orders/${orderId}?expand=products`)
       setOrder(response.data);
     }
 

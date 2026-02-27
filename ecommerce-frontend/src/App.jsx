@@ -4,16 +4,14 @@ import { OrdersPage } from './pages/orders/OrdersPage';
 import { TrackingPage } from './pages/TrackingPage';
 import { Routes, Route } from 'react-router';
 import { useEffect, useState } from "react";
-import axios from 'axios';
+import api from './api'; // use centralized api
 import './App.css'
-
-window.axios = axios;//we can access axios in the console window
 
 function App() {
   const [cart, setCart] = useState([]);
 
   const loadCart = async () => {//to share it across components
-    const response = await axios.get('/api/cart-items?expand=product');
+    const response = await api.get('/api/cart-items?expand=product'); // <-- use api instead of axios
     setCart(response.data);
   }
 

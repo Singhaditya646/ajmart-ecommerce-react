@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { formatMoney } from "../../utils/money";
-import axios from "axios";
+import api from '../../api'; // <-- import your centralized API
 
 export function Product({ product, loadCart }) {
   const [quantity, setQuantity] = useState(1);//to update quantity while using quantity selector
   const [showAddedMessage, setShowAddedMessage] = useState(false);//to show the added message while adding new product
 
   const addToCart = async () => {
-    await axios.post("/api/cart-items", {
+    await api.post("/api/cart-items", {
       productId: product.id,
       quantity, //shorthand-property
     });

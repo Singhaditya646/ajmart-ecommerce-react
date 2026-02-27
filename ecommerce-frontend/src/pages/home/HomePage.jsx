@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from '../../api'; // <-- import your centralized API
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { Header } from "../../components/Header";
@@ -13,7 +13,7 @@ export function HomePage({ cart, loadCart }) {
   useEffect(() => {
     const getHomeData = async () => {
       const urlPath = search ? `/api/products?search=${search}` : '/api/products';
-      const response = await axios.get(urlPath); //axios is another way of fetching the data
+      const response = await api.get(urlPath); //axios is another way of fetching the data
       setProducts(response.data);
     }
 

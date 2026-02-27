@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from '../../api'; // use centralized api
 import { useEffect, useState } from "react";
 import { formatMoney } from "../../utils/money";
 import { useNavigate } from "react-router";
@@ -10,7 +10,7 @@ export function PaymentSummary({ cart, loadCart }) {
 
   useEffect(() => {
     const fetchPaymentSummaryData = async () => {
-      const response = await axios.get("/api/payment-summary");
+      const response = await api.get("/api/payment-summary");
       setPaymentSummary(response.data);
     }
 
@@ -18,7 +18,7 @@ export function PaymentSummary({ cart, loadCart }) {
   }, [cart]);
 
   const createOrder = async () => {
-    await axios.post(`/api/orders`);
+    await api.post(`/api/orders`);
     await loadCart();
     navigate('/orders');
   }

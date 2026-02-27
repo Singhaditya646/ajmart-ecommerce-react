@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { Fragment } from "react";
-import axios from 'axios';
+import api from '../../api'; // <-- import your centralized API
 
 export function OrderDetailsGrid({ order, loadCart }) {
   return (
@@ -8,7 +8,7 @@ export function OrderDetailsGrid({ order, loadCart }) {
       {order.products.map((orderProduct) => {
 
         const addToCart = async () => {
-          await axios.post('/api/cart-items', {
+          await api.post('/api/cart-items', {
             productId: orderProduct.productId,
             quantity: 1
           });

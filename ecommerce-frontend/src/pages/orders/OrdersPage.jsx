@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from '../../api'; // <-- import your centralized API
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { OrdersGrid } from "./OrdersGrid";
@@ -10,7 +10,7 @@ export function OrdersPage({ cart, loadCart }) {
 
   useEffect(() => {
     const fetchOrdersData = async() => {
-      const response = await axios.get("/api/orders?expand=products");
+      const response = await api.get("/api/orders?expand=products");
       setOrders(response.data);
     }
 
@@ -31,7 +31,7 @@ export function OrdersPage({ cart, loadCart }) {
 
         <button className="reset-button"
           onClick={async ()=> {
-            await axios.post('/api/reset');
+            await api.post('/api/reset');
             window.location.reload();
           }}
         >

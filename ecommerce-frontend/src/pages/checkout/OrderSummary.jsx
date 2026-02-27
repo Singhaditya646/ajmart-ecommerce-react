@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from '../../api'; // use centralized api
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { formatMoney } from "../../utils/money";
@@ -9,7 +9,7 @@ export function OrderSummary( {cart, loadCart }) {
 
     useEffect(() => {
       const fetchOrderSummaryData = async () => {
-        const response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime");
+        const response = await api.get("/api/delivery-options?expand=estimatedDeliveryTime");
         setDeliveryOptions(response.data);
       }
 
@@ -27,7 +27,7 @@ export function OrderSummary( {cart, loadCart }) {
           );
 
           const deleteCartItem = async () => {
-            await axios.delete(`/api/cart-items/${cartItem.productId}`)
+            await api.delete(`/api/cart-items/${cartItem.productId}`)
             await loadCart();
           }
 
