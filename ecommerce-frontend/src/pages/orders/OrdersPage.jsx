@@ -32,7 +32,9 @@ export function OrdersPage({ cart, loadCart }) {
         <button className="reset-button"
           onClick={async ()=> {
             await api.post('/api/reset');
-            window.location.reload();
+            setOrders([]);
+
+            await loadCart();
           }}
         >
           <img
